@@ -1,12 +1,16 @@
 # TaskFlow
 
-Sistema simples e funcional de controle de tarefas pessoais desenvolvido em Angular 17+, com dados mantidos em memória por meio de um service.
+Sistema simples e funcional de controle de tarefas pessoais desenvolvido em Angular 21, com dados mantidos em memória por meio de um service.
 
 ## Tecnologias utilizadas
 
-- Angular 17+
+- Angular 21
 - TypeScript
 - CSS
+
+## Requisitos
+
+- Node.js 20.19+ (ou 22.12+)
 
 ## Funcionalidades implementadas
 
