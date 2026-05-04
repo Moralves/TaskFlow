@@ -1,0 +1,32 @@
+<section class="dashboard stack">
+  <div class="cards">
+    <div class="card">
+      <p class="label">Total de tarefas</p>
+      <p class="value">{{ stats.total }}</p>
+    </div>
+    <div class="card">
+      <p class="label">Tarefas pendentes</p>
+      <p class="value">{{ stats.pendentes }}</p>
+    </div>
+    <div class="card">
+      <p class="label">Tarefas concluídas</p>
+      <p class="value">{{ stats.concluidas }}</p>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card prioridade-card" *ngFor="let prioridade of prioridades" [ngClass]="{
+        alta: prioridade === 'Alta',
+        media: prioridade === 'Média',
+        baixa: prioridade === 'Baixa'
+      }">
+      <p class="label">Prioridade {{ prioridade }}</p>
+      <p class="value">{{ totalPorPrioridade(prioridade) }}</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a class="btn primary" routerLink="/tarefa/nova">Nova Tarefa</a>
+    <a class="btn secondary" routerLink="/tarefas">Ver Todas</a>
+  </div>
+</section>

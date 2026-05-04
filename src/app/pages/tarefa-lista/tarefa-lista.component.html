@@ -1,0 +1,76 @@
+<section class="lista stack">
+  <div class="card filtros">
+    <div class="filtro-item">
+      <label for="busca">Busca</label>
+      <input id="busca" type="text" placeholder="Buscar por título ou descrição" [(ngModel)]="busca" />
+    </div>
+    <div class="filtro-item">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" [(ngModel)]="filtroCategoria">
+        <option value="Todas">Todas</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">
+          {{ categoria }}
+        </option>
+      </select>
+    </div>
+    <div class="filtro-item">
+      <label for="prioridade">Prioridade</label>
+      <select id="prioridade" [(ngModel)]="filtroPrioridade">
+        <option value="Todas">Todas</option>
+        <option *ngFor="let prioridade of prioridades" [value]="prioridade">
+          {{ prioridade }}
+        </option>
+      </select>
+    </div>
+    <div class="filtro-item">
+      <label for="status">Status</label>
+      <select id="status" [(ngModel)]="filtroStatus">
+        <option value="Todas">Todas</option>
+        <option value="Pendentes">Pendentes</option>
+        <option value="Concluídas">Concluídas</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="cards" *ngIf="tarefasFiltradas.length > 0; else vazio">
+    <div class="card tarefa-card" *ngFor="let tarefa of tarefasFiltradas" [class.concluida]="tarefa.concluida">
+      <div class="card-header">
+        <div>
+          <h3>{{ tarefa.titulo }}</h3>
+          <span class="badge" [ngClass]="classePrioridade(tarefa.prioridade)">
+            {{ tarefa.prioridade }}
+          </span>
+        </div>
+        <label class="status">
+          <input type="checkbox" [checked]="tarefa.concluida" (change)="alternarConclusao(tarefa)" />
+          <span>{{ tarefa.concluida ? "Concluída" : "Pendente" }}</span>
+        </label>
+      </div>
+
+      <p class="descricao">{{ tarefa.descricao }}</p>
+
+      <div class="meta">
+        <span>Categoria: {{ tarefa.categoria }}</span>
+        <span>Criada em: {{ tarefa.dataCriacao | date: "dd/MM/yyyy" }}</span>
+        <span *ngIf="tarefa.dataConclusao">
+          Concluída em: {{ tarefa.dataConclusao | date: "dd/MM/yyyy" }}
+        </span>
+      </div>
+
+      <div class="acoes">
+        <a class="btn secondary" [routerLink]="['/tarefa/editar', tarefa.id]">
+          Editar
+        </a>
+        <button class="btn danger" type="button" (click)="excluirTarefa(tarefa)">
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #vazio>
+    <div class="card vazio">
+      Nenhuma tarefa encontrada. Ajuste os filtros ou cadastre uma nova tarefa.
+    </div>
+  </ng-template>
+</section>

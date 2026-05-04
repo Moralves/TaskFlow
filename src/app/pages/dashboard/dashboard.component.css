@@ -1,0 +1,33 @@
+.dashboard .label {
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.dashboard .value {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.prioridade-card {
+  border-left: 5px solid transparent;
+}
+
+.prioridade-card.alta {
+  border-color: var(--danger);
+}
+
+.prioridade-card.media {
+  border-color: var(--warning);
+}
+
+.prioridade-card.baixa {
+  border-color: var(--success);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

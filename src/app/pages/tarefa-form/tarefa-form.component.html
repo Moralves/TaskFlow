@@ -1,0 +1,62 @@
+<section class="formulario">
+  <div class="card">
+    <h2>{{ modoEdicao ? "Editar tarefa" : "Nova tarefa" }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="salvar()" class="stack">
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" formControlName="titulo" />
+        <small class="erro" *ngIf="form.get('titulo')?.touched">
+          <span *ngIf="form.get('titulo')?.hasError('required')">
+            O título é obrigatório.
+          </span>
+          <span *ngIf="form.get('titulo')?.hasError('minlength')">
+            O título deve ter no mínimo 3 caracteres.
+          </span>
+        </small>
+      </div>
+
+      <div class="campo">
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" formControlName="descricao"></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="categoria">Categoria</label>
+        <select id="categoria" formControlName="categoria">
+          <option value="">Selecione</option>
+          <option *ngFor="let categoria of categorias" [value]="categoria">
+            {{ categoria }}
+          </option>
+        </select>
+        <small class="erro" *ngIf="form.get('categoria')?.touched">
+          <span *ngIf="form.get('categoria')?.hasError('required')">
+            A categoria é obrigatória.
+          </span>
+        </small>
+      </div>
+
+      <div class="campo">
+        <label for="prioridade">Prioridade</label>
+        <select id="prioridade" formControlName="prioridade">
+          <option value="">Selecione</option>
+          <option *ngFor="let prioridade of prioridades" [value]="prioridade">
+            {{ prioridade }}
+          </option>
+        </select>
+        <small class="erro" *ngIf="form.get('prioridade')?.touched">
+          <span *ngIf="form.get('prioridade')?.hasError('required')">
+            A prioridade é obrigatória.
+          </span>
+        </small>
+      </div>
+
+      <div class="acoes">
+        <button class="btn primary" type="submit">Salvar</button>
+        <button class="btn secondary" type="button" (click)="cancelar()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

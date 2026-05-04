@@ -1,0 +1,46 @@
+.app-header {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #cbd5f5;
+  font-weight: 600;
+}
+
+.nav a.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.main-content {
+  padding: 24px 0 48px;
+}
+
+@media (max-width: 720px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

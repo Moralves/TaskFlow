@@ -1,0 +1,25 @@
+.formulario h2 {
+  margin: 0 0 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.erro {
+  color: var(--danger);
+  font-size: 12px;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
